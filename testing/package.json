@@ -4,19 +4,33 @@
   "author": "Hauruseu Siarhei",
   "license": "ISC",
   "scripts": {
+    "pretest": "nyc instrument ../build/resources/main/assets/js/bundle.js ../out",
     "test": "gulp test",
-    "report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
+    "report": "allure generate allure-results --clean -o allure-report && allure open allure-report",
+    "rep": "nyc report --reporter=html",
+    "rep2": "istanbul report html",
+    "combine": "istanbul-combine -d coverage -p summary -r lcov -r html coverage/coverage-1525358376235.json coverage/coverage-1525358382183 /coverage/coverage.json"
   },
   "devDependencies": {
     "assert": "^1.3.0",
-    "gulp": "^3.9.1",
-    "gulp-mocha": "^2.2.0",
-    "selenium-standalone": "^6.13.0",
-    "webdriverio": "^4.0.5",    
+    "body-parser": "^1.18.3",
     "chai": "^3.5.0",
-    "run-sequence": "2.1.0",
+    "chai-as-promised": "7.1.1",
+    "express": "^4.16.3",
+    "gulp": "^3.9.1",
+    "gulp-istanbul": "^1.1.3",
+    "gulp-mocha": "^2.2.0",
+    "istanbul": "^0.4.5",
+    "istanbul-combine": "^0.3.0",
+    "istanbul-middleware": "^0.2.2",
+    "mkdirp": "^0.5.1",
     "mocha-allure-reporter": "1.3.2",
+    "nyc": "^11.7.1",
     "properties-reader": "0.0.15",
-    "chai-as-promised": "7.1.1"
+    "remap-istanbul": "^0.11.1",
+    "rimraf": "^2.6.2",
+    "run-sequence": "2.1.0",
+    "selenium-standalone": "^6.13.0",
+    "webdriverio": "^4.0.5"
   }
 }

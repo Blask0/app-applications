@@ -8,7 +8,7 @@ const studioUtils = require('../libs/studio.utils.js');
 const appBrowsePanel = require('../page_objects/applications/applications.browse.panel');
 const appStatisticPanel = require('../page_objects/applications/application.item.statistic.panel');
 
-const { saveCoverage, loadCoverage } = require('../utils/blanket');
+const { saveCoverage, loadCoverage, writeCoverageToFile } = require('../utils/blanket');
 
 describe('Applications Browse panel - selection of items spec', function () {
     this.timeout(appConst.SUITE_TIMEOUT);
@@ -42,14 +42,19 @@ describe('Applications Browse panel - selection of items spec', function () {
     });
 
     beforeEach(async () => {
+        console.log('{{{\n');
         await studioUtils.navigateToApplicationsApp();
         await loadCoverage(webDriverHelper.getBrowser());
     });
     afterEach(async () => {
         await saveCoverage(webDriverHelper.getBrowser());
         await studioUtils.doCloseCurrentBrowserTab();
+        console.log('\n}}}\n');
     });
     before(() => {
-        console.log('Specification is starting: ' + this.title);
+        console.log('specification is starting: ' + this.title);
+    });
+    after(() => {
+        writeCoverageToFile(webDriverHelper.getBrowser());
     });
 });

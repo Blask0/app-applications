@@ -9,7 +9,7 @@ function WebDriverHelper() {
 
 WebDriverHelper.prototype.getBrowser = function () {
     return this.browser;
-}
+};
 
 const makeChromeOptions = headless => ({
     "args": [

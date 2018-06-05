@@ -4,6 +4,7 @@
   "description": "Enonix XP - Applications App",
   "license": "GPL-3.0",
   "scripts": {
+    "pretest": "nyc instrument ./build/resources/main/assets/js/bundle.js ./",
     "build": "webpack --hide-modules",
     "lint": "run-p -c --aggregate-output lint:*",
     "fix": "run-p -c --aggregate-output fix:*",
@@ -31,6 +32,7 @@
     "less": "^3.0.1",
     "less-loader": "^4.1.0",
     "npm-run-all": "^4.1.1",
+    "nyc": "^11.7.1",
     "postcss-loader": "^2.1.1",
     "postcss-normalize": "^4.0.0",
     "prettier": "^1.11.1",
